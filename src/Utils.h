@@ -11,7 +11,7 @@
 #include <sys/time.h>
 #endif
 
-namespace utils{
+namespace utils {
 
 struct gen_rand {
   double factor;

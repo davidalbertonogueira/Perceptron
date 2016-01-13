@@ -13,8 +13,7 @@
 #include <algorithm>
 #include <cassert>
 
-void LearnAND()
-{
+void LearnAND() {
   std::cout << "Train AND function with perceptron." << std::endl;
 
   std::vector<TrainingSample> training_set =
@@ -36,8 +35,7 @@ void LearnAND()
   std::cout << std::endl;
 }
 
-void LearnNAND()
-{
+void LearnNAND() {
   std::cout << "Train NAND function with perceptron." << std::endl;
 
   std::vector<TrainingSample> training_set =
@@ -59,8 +57,7 @@ void LearnNAND()
   std::cout << std::endl;
 }
 
-void LearnOR()
-{
+void LearnOR() {
   std::cout << "Train OR function with perceptron." << std::endl;
 
   std::vector<TrainingSample> training_set =
@@ -82,8 +79,7 @@ void LearnOR()
   std::cout << std::endl;
 }
 
-void LearnNOR()
-{
+void LearnNOR() {
   std::cout << "Train NOR function with perceptron." << std::endl;
 
   std::vector<TrainingSample> training_set =
@@ -105,8 +101,7 @@ void LearnNOR()
   std::cout << std::endl;
 }
 
-void LearnNOT()
-{
+void LearnNOT() {
   std::cout << "Train NOT function with perceptron." << std::endl;
 
   std::vector<TrainingSample> training_set =

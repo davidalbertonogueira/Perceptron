@@ -10,11 +10,11 @@ public:
 
     m_input_vector = input_vector;
   }
-   std::vector<double> & input_vector() { 
-    return m_input_vector; 
+  std::vector<double> & input_vector() {
+    return m_input_vector;
   }
-  uint32_t GetInputVectorSize() const { 
-    return m_input_vector.size(); 
+  uint32_t GetInputVectorSize() const {
+    return m_input_vector.size();
   }
   void AddBiasValue(double bias_value) {
     m_input_vector.insert(m_input_vector.begin(), bias_value);
@@ -26,8 +26,8 @@ protected:
 
 class TrainingSample : public Sample {
 public:
-  TrainingSample( const std::vector<double> & input_vector,
-    bool output_value) :
+  TrainingSample(const std::vector<double> & input_vector,
+                 bool output_value) :
     Sample(input_vector) {
     m_output = output_value;
   }

@@ -19,10 +19,10 @@
 class Perceptron {
 public:
   //Simple feed forward perceptron
-  Perceptron(double learning_rate, 
-    int max_iterations,
-    double threshold, 
-    double bias_value = 1.0) {
+  Perceptron(double learning_rate,
+             int max_iterations,
+             double threshold,
+             double bias_value = 1.0) {
     m_learning_rate = learning_rate;
     m_max_iterations = max_iterations;
     m_threshold = threshold;
@@ -35,14 +35,14 @@ public:
     m_weights.clear();
   };
 
-  bool GetOutput(const std::vector<double> &x) ;
+  bool GetOutput(const std::vector<double> &x);
 
   void UpdateWeight(const std::vector<double> &x,
-    double error) ;
+                    double error);
 
   void Train(const std::vector<TrainingSample> &training_sample_set,
-    bool bias_already_in,
-    bool zero_weight_initialization);
+             bool bias_already_in,
+             bool zero_weight_initialization);
 
 private:
   double m_learning_rate;
