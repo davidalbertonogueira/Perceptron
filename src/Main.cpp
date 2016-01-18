@@ -119,12 +119,35 @@ void LearnNOT() {
   std::cout << std::endl;
 }
 
+
+void LearnXOR() {
+  std::cout << "Train XOR function with perceptron." << std::endl;
+
+  std::vector<TrainingSample> training_set =
+  {
+    { { 1, 0, 0 },false },
+    { { 1, 0, 1 },true },
+    { { 1, 1, 0 },true },
+    { { 1, 1, 1 },false }
+  };
+
+  Perceptron my_perceptron(0.1, 100, 0.5);
+  my_perceptron.Train(training_set, true, true);
+
+  if ((!(my_perceptron.GetOutput({ 1, 0, 0 }) == false)) ||
+      (!(my_perceptron.GetOutput({ 1, 0, 1 }) == true)) ||
+      (!(my_perceptron.GetOutput({ 1, 1, 0 }) == true)) ||
+      (!(my_perceptron.GetOutput({ 1, 1, 1 }) == false)))
+    std::cout << "Failed to train. " <<
+    " A simple perceptron cannot learn the XOR function." << std::endl;
+}
+
 int main() {
   LearnAND();
   LearnNAND();
   LearnOR();
   LearnNOR();
   LearnNOT();
-
+  LearnXOR();
   return 0;
 }
