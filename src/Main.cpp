@@ -18,19 +18,19 @@ void LearnAND() {
 
   std::vector<TrainingSample> training_set =
   {
-    {{ 1, 0, 0 },false},
-    {{ 1, 0, 1 },false},
-    {{ 1, 1, 0 },false},
-    {{ 1, 1, 1 },true}
+    {{ 0, 0 },false},
+    {{ 0, 1 },false},
+    {{ 1, 0 },false},
+    {{ 1, 1 },true}
   };
 
   Perceptron my_perceptron(0.1, 100, 1);
-  my_perceptron.Train(training_set, true, true);
+  my_perceptron.Train(training_set, false, true);
 
-  assert(my_perceptron.GetOutput({ 1, 0, 0 }) == false);
-  assert(my_perceptron.GetOutput({ 1, 0, 1 }) == false);
-  assert(my_perceptron.GetOutput({ 1, 1, 0 }) == false);
-  assert(my_perceptron.GetOutput({ 1, 1, 1 }) == true);
+  assert(my_perceptron.GetOutput({ 0, 0 }) == false);
+  assert(my_perceptron.GetOutput({ 0, 1 }) == false);
+  assert(my_perceptron.GetOutput({ 1, 0 }) == false);
+  assert(my_perceptron.GetOutput({ 1, 1 }) == true);
   std::cout << "Trained with success." << std::endl;
   std::cout << std::endl;
 }
@@ -40,19 +40,19 @@ void LearnNAND() {
 
   std::vector<TrainingSample> training_set =
   {
-    {{ 1, 0, 0 },true},
-    {{ 1, 0, 1 },true},
-    {{ 1, 1, 0 },true},
-    {{ 1, 1, 1 },false}
+    {{ 0, 0 },true},
+    {{ 0, 1 },true},
+    {{ 1, 0 },true},
+    {{ 1, 1 },false}
   };
 
   Perceptron my_perceptron(0.1, 100, 1);
-  my_perceptron.Train(training_set, true, true);
+  my_perceptron.Train(training_set, false, true);
 
-  assert(my_perceptron.GetOutput({ 1, 0, 0 }) == true);
-  assert(my_perceptron.GetOutput({ 1, 0, 1 }) == true);
-  assert(my_perceptron.GetOutput({ 1, 1, 0 }) == true);
-  assert(my_perceptron.GetOutput({ 1, 1, 1 }) == false);
+  assert(my_perceptron.GetOutput({ 0, 0 }) == true);
+  assert(my_perceptron.GetOutput({ 0, 1 }) == true);
+  assert(my_perceptron.GetOutput({ 1, 0 }) == true);
+  assert(my_perceptron.GetOutput({ 1, 1 }) == false);
   std::cout << "Trained with success." << std::endl;
   std::cout << std::endl;
 }
@@ -62,19 +62,19 @@ void LearnOR() {
 
   std::vector<TrainingSample> training_set =
   {
-    {{ 1, 0, 0 },false},
-    {{ 1, 0, 1 },true},
-    {{ 1, 1, 0 },true},
-    {{ 1, 1, 1 },true}
+    {{  0, 0 },false},
+    {{  0, 1 },true},
+    {{  1, 0 },true},
+    {{  1, 1 },true}
   };
 
   Perceptron my_perceptron(0.1, 100, 1);
-  my_perceptron.Train(training_set, true, true);
+  my_perceptron.Train(training_set, false, true);
 
-  assert(my_perceptron.GetOutput({ 1, 0, 0 }) == false);
-  assert(my_perceptron.GetOutput({ 1, 0, 1 }) == true);
-  assert(my_perceptron.GetOutput({ 1, 1, 0 }) == true);
-  assert(my_perceptron.GetOutput({ 1, 1, 1 }) == true);
+  assert(my_perceptron.GetOutput({ 0, 0 }) == false);
+  assert(my_perceptron.GetOutput({ 0, 1 }) == true);
+  assert(my_perceptron.GetOutput({ 1, 0 }) == true);
+  assert(my_perceptron.GetOutput({ 1, 1 }) == true);
   std::cout << "Trained with success." << std::endl;
   std::cout << std::endl;
 }
@@ -84,19 +84,19 @@ void LearnNOR() {
 
   std::vector<TrainingSample> training_set =
   {
-    {{ 1, 0, 0 },true },
-    {{ 1, 0, 1 },false},
-    {{ 1, 1, 0 },false},
-    {{ 1, 1, 1 },false }
+    {{ 0, 0 },true },
+    {{ 0, 1 },false},
+    {{ 1, 0 },false},
+    {{ 1, 1 },false }
   };
 
   Perceptron my_perceptron(0.1, 100, 1);
-  my_perceptron.Train(training_set, true, true);
+  my_perceptron.Train(training_set, false, true);
 
-  assert(my_perceptron.GetOutput({ 1, 0, 0 }) == true);
-  assert(my_perceptron.GetOutput({ 1, 0, 1 }) == false);
-  assert(my_perceptron.GetOutput({ 1, 1, 0 }) == false);
-  assert(my_perceptron.GetOutput({ 1, 1, 1 }) == false);
+  assert(my_perceptron.GetOutput({ 0, 0 }) == true);
+  assert(my_perceptron.GetOutput({ 0, 1 }) == false);
+  assert(my_perceptron.GetOutput({ 1, 0 }) == false);
+  assert(my_perceptron.GetOutput({ 1, 1 }) == false);
   std::cout << "Trained with success." << std::endl;
   std::cout << std::endl;
 }
@@ -106,15 +106,15 @@ void LearnNOT() {
 
   std::vector<TrainingSample> training_set =
   {
-    {{ 1, 0},true},
-    {{ 1, 1},false}
+    {{ 0},true},
+    {{ 1},false}
   };
 
   Perceptron my_perceptron(0.1, 100, 1);
-  my_perceptron.Train(training_set, true, true);
+  my_perceptron.Train(training_set, false, true);
 
-  assert(my_perceptron.GetOutput({ 1, 0 }) == true);
-  assert(my_perceptron.GetOutput({ 1, 1 }) == false);
+  assert(my_perceptron.GetOutput({ 0 }) == true);
+  assert(my_perceptron.GetOutput({ 1 }) == false);
   std::cout << "Trained with success." << std::endl;
   std::cout << std::endl;
 }
@@ -125,19 +125,19 @@ void LearnXOR() {
 
   std::vector<TrainingSample> training_set =
   {
-    { { 1, 0, 0 },false },
-    { { 1, 0, 1 },true },
-    { { 1, 1, 0 },true },
-    { { 1, 1, 1 },false }
+    { { 0, 0 },false },
+    { { 0, 1 },true },
+    { { 1, 0 },true },
+    { { 1, 1 },false }
   };
 
   Perceptron my_perceptron(0.1, 100, 1);
-  my_perceptron.Train(training_set, true, true);
+  my_perceptron.Train(training_set, false, true);
 
-  if ((!(my_perceptron.GetOutput({ 1, 0, 0 }) == false)) ||
-      (!(my_perceptron.GetOutput({ 1, 0, 1 }) == true)) ||
-      (!(my_perceptron.GetOutput({ 1, 1, 0 }) == true)) ||
-      (!(my_perceptron.GetOutput({ 1, 1, 1 }) == false)))
+  if ((!(my_perceptron.GetOutput({ 0, 0 }) == false)) ||
+      (!(my_perceptron.GetOutput({ 0, 1 }) == true)) ||
+      (!(my_perceptron.GetOutput({ 1, 0 }) == true)) ||
+      (!(my_perceptron.GetOutput({ 1, 1 }) == false)))
     std::cout << "Failed to train. " <<
     " A simple perceptron cannot learn the XOR function." << std::endl;
 }
