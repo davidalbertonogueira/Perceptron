@@ -42,7 +42,7 @@ void Perceptron::Train(const std::vector<TrainingSample> &training_sample_set,
   //set up bias
   if (!bias_already_in) {
     for (auto & training_sample_with_bias : training_sample_set_with_bias) {
-      training_sample_with_bias.AddBiasValue(m_threshold);
+      training_sample_with_bias.AddBiasValue(1);
     }
   }
   int num_examples = training_sample_set_with_bias.size();
