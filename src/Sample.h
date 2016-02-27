@@ -13,7 +13,7 @@ public:
   std::vector<double> & input_vector() {
     return m_input_vector;
   }
-  uint32_t GetInputVectorSize() const {
+  size_t GetInputVectorSize() const {
     return m_input_vector.size();
   }
   void AddBiasValue(double bias_value) {

@@ -20,11 +20,9 @@ class Perceptron {
 public:
   //Simple feed forward perceptron
   Perceptron(double learning_rate,
-             int max_iterations,
-             double threshold) {
+             int max_iterations ) {
     m_learning_rate = learning_rate;
     m_max_iterations = max_iterations;
-    m_threshold = threshold;
     //initialize weights
     m_weights.clear();
   };
@@ -45,7 +43,6 @@ public:
 private:
   double m_learning_rate;
   int m_max_iterations;
-  double m_threshold;
   std::vector<double>  m_weights;
 };
 

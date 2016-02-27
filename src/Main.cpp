@@ -24,7 +24,7 @@ void LearnAND() {
     {{ 1, 1 },true}
   };
 
-  Perceptron my_perceptron(0.1, 100, 0.5);
+  Perceptron my_perceptron(0.1, 100);
   my_perceptron.Train(training_set, false, true);
 
   assert(my_perceptron.GetOutput({ 0, 0 }) == false);
@@ -46,7 +46,7 @@ void LearnNAND() {
     {{ 1, 1 },false}
   };
 
-  Perceptron my_perceptron(0.1, 100, 0.5);
+  Perceptron my_perceptron(0.1, 100);
   my_perceptron.Train(training_set, false, true);
 
   assert(my_perceptron.GetOutput({ 0, 0 }) == true);
@@ -68,7 +68,7 @@ void LearnOR() {
     {{  1, 1 },true}
   };
 
-  Perceptron my_perceptron(0.1, 100, 0.5);
+  Perceptron my_perceptron(0.1, 100);
   my_perceptron.Train(training_set, false, true);
 
   assert(my_perceptron.GetOutput({ 0, 0 }) == false);
@@ -90,7 +90,7 @@ void LearnNOR() {
     {{ 1, 1 },false }
   };
 
-  Perceptron my_perceptron(0.1, 100, 0.5);
+  Perceptron my_perceptron(0.1, 100);
   my_perceptron.Train(training_set, false, true);
 
   assert(my_perceptron.GetOutput({ 0, 0 }) == true);
@@ -110,7 +110,7 @@ void LearnNOT() {
     {{ 1},false}
   };
 
-  Perceptron my_perceptron(0.1, 100, 0.5);
+  Perceptron my_perceptron(0.1, 100);
   my_perceptron.Train(training_set, false, true);
 
   assert(my_perceptron.GetOutput({ 0 }) == true);
@@ -131,7 +131,7 @@ void LearnXOR() {
     { { 1, 1 },false }
   };
 
-  Perceptron my_perceptron(0.1, 100, 0.5);
+  Perceptron my_perceptron(0.1, 100);
   my_perceptron.Train(training_set, false, true);
 
   if ((!(my_perceptron.GetOutput({ 0, 0 }) == false)) ||
