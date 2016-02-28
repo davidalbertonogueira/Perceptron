@@ -36,7 +36,8 @@ void Perceptron::UpdateWeight(const std::vector<double> &x,
 
 void Perceptron::Train(const std::vector<TrainingSample> &training_sample_set,
                        bool bias_already_in,
-                       bool zero_weight_initialization) {
+                       bool zero_weight_initialization,
+                       int max_iterations) {
   std::vector<TrainingSample> training_sample_set_with_bias(training_sample_set);
 
   //set up bias
@@ -60,7 +61,7 @@ void Perceptron::Train(const std::vector<TrainingSample> &training_sample_set,
     std::cout << m_weightselement << "\t";
   std::cout << std::endl;
 
-  for (int i = 0; i < m_max_iterations; i++) {
+  for (int i = 0; i < max_iterations; i++) {
     int error_count = 0;
     for (auto & training_sample_with_bias : training_sample_set_with_bias) {
       bool prediction = GetOutput(training_sample_with_bias.input_vector());

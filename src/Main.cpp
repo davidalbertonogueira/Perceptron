@@ -24,8 +24,8 @@ void LearnAND() {
     {{ 1, 1 },true}
   };
 
-  Perceptron my_perceptron(0.1, 100);
-  my_perceptron.Train(training_set, false, true);
+  Perceptron my_perceptron(0.1);
+  my_perceptron.Train(training_set, false, true, 100);
 
   assert(my_perceptron.GetOutput({ 0, 0 }) == false);
   assert(my_perceptron.GetOutput({ 0, 1 }) == false);
@@ -46,8 +46,8 @@ void LearnNAND() {
     {{ 1, 1 },false}
   };
 
-  Perceptron my_perceptron(0.1, 100);
-  my_perceptron.Train(training_set, false, true);
+  Perceptron my_perceptron(0.1);
+  my_perceptron.Train(training_set, false, true, 100);
 
   assert(my_perceptron.GetOutput({ 0, 0 }) == true);
   assert(my_perceptron.GetOutput({ 0, 1 }) == true);
@@ -68,8 +68,8 @@ void LearnOR() {
     {{  1, 1 },true}
   };
 
-  Perceptron my_perceptron(0.1, 100);
-  my_perceptron.Train(training_set, false, true);
+  Perceptron my_perceptron(0.1);
+  my_perceptron.Train(training_set, false, true, 100);
 
   assert(my_perceptron.GetOutput({ 0, 0 }) == false);
   assert(my_perceptron.GetOutput({ 0, 1 }) == true);
@@ -90,8 +90,8 @@ void LearnNOR() {
     {{ 1, 1 },false }
   };
 
-  Perceptron my_perceptron(0.1, 100);
-  my_perceptron.Train(training_set, false, true);
+  Perceptron my_perceptron(0.1);
+  my_perceptron.Train(training_set, false, true, 100);
 
   assert(my_perceptron.GetOutput({ 0, 0 }) == true);
   assert(my_perceptron.GetOutput({ 0, 1 }) == false);
@@ -110,8 +110,8 @@ void LearnNOT() {
     {{ 1},false}
   };
 
-  Perceptron my_perceptron(0.1, 100);
-  my_perceptron.Train(training_set, false, true);
+  Perceptron my_perceptron(0.1);
+  my_perceptron.Train(training_set, false, true, 100);
 
   assert(my_perceptron.GetOutput({ 0 }) == true);
   assert(my_perceptron.GetOutput({ 1 }) == false);
@@ -131,8 +131,8 @@ void LearnXOR() {
     { { 1, 1 },false }
   };
 
-  Perceptron my_perceptron(0.1, 100);
-  my_perceptron.Train(training_set, false, true);
+  Perceptron my_perceptron(0.1);
+  my_perceptron.Train(training_set, false, true, 100);
 
   if ((!(my_perceptron.GetOutput({ 0, 0 }) == false)) ||
       (!(my_perceptron.GetOutput({ 0, 1 }) == true)) ||
