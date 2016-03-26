@@ -32,7 +32,7 @@
     <ClInclude Include="..\src\Sample.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\microunit.h">
+    <ClInclude Include="..\deps\microunit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
