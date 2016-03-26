@@ -35,6 +35,4 @@ public:
 protected:
   bool m_output;
 };
-
-
 #endif // TRAININGSAMPLE_H

@@ -146,6 +146,7 @@
     <ClCompile Include="..\src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\microunit.h" />
     <ClInclude Include="..\src\Perceptron.h" />
     <ClInclude Include="..\src\Sample.h" />
     <ClInclude Include="..\src\Utils.h" />

@@ -15,8 +15,15 @@
 
 
 bool Perceptron::GetOutput(const std::vector<double> &x) {
-  double inner_prod = std::inner_product(begin(x),
-                                         end(x),
+  Sample sample_set_with_bias(x);
+  if (x.size()!=m_weights.size() ){
+    if (x.size() + 1 == m_weights.size()) {
+      //set up bias
+      sample_set_with_bias.AddBiasValue(1);
+    }
+  }
+  double inner_prod = std::inner_product(begin(sample_set_with_bias.input_vector()),
+                                         end(sample_set_with_bias.input_vector()),
                                          begin(m_weights),
                                          0.0);
 
