@@ -1,3 +1,7 @@
+//============================================================================
+// Name : Sample.h
+// Author : David Nogueira
+//============================================================================
 #ifndef TRAININGSAMPLE_H
 #define TRAININGSAMPLE_H
 
@@ -10,7 +14,7 @@ public:
 
     m_input_vector = input_vector;
   }
-  std::vector<double> & input_vector() {
+  const std::vector<double> & input_vector() const {
     return m_input_vector;
   }
   size_t GetInputVectorSize() const {

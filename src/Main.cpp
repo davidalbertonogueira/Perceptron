@@ -2,7 +2,6 @@
 // Name : Main.cpp
 // Author : David Nogueira
 //============================================================================
-
 #include "Perceptron.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,10 +26,11 @@ UNIT(LearnAND) {
   Perceptron my_perceptron(0.1);
   my_perceptron.Train(training_set, false, true, 100);
 
-  ASSERT_TRUE(my_perceptron.GetOutput({ 0, 0 }) == false);
-  ASSERT_TRUE(my_perceptron.GetOutput({ 0, 1 }) == false);
-  ASSERT_TRUE(my_perceptron.GetOutput({ 1, 0 }) == false);
-  ASSERT_TRUE(my_perceptron.GetOutput({ 1, 1 }) == true);
+  for (const auto & training_sample : training_set) {
+    bool class_id;
+    class_id = my_perceptron.GetOutput(training_sample.input_vector());
+    ASSERT_TRUE(class_id == training_sample.output_value());
+  }
   std::cout << "Trained with success." << std::endl;
   std::cout << std::endl;
 }
@@ -49,10 +49,11 @@ UNIT(LearnNAND) {
   Perceptron my_perceptron(0.1);
   my_perceptron.Train(training_set, false, true, 100);
 
-  ASSERT_TRUE(my_perceptron.GetOutput({ 0, 0 }) == true);
-  ASSERT_TRUE(my_perceptron.GetOutput({ 0, 1 }) == true);
-  ASSERT_TRUE(my_perceptron.GetOutput({ 1, 0 }) == true);
-  ASSERT_TRUE(my_perceptron.GetOutput({ 1, 1 }) == false);
+  for (const auto & training_sample : training_set) {
+    bool class_id;
+    class_id = my_perceptron.GetOutput(training_sample.input_vector());
+    ASSERT_TRUE(class_id == training_sample.output_value());
+  }
   std::cout << "Trained with success." << std::endl;
   std::cout << std::endl;
 }
@@ -71,10 +72,11 @@ UNIT(LearnOR) {
   Perceptron my_perceptron(0.1);
   my_perceptron.Train(training_set, false, true, 100);
 
-  ASSERT_TRUE(my_perceptron.GetOutput({ 0, 0 }) == false);
-  ASSERT_TRUE(my_perceptron.GetOutput({ 0, 1 }) == true);
-  ASSERT_TRUE(my_perceptron.GetOutput({ 1, 0 }) == true);
-  ASSERT_TRUE(my_perceptron.GetOutput({ 1, 1 }) == true);
+  for (const auto & training_sample : training_set) {
+    bool class_id;
+    class_id = my_perceptron.GetOutput(training_sample.input_vector());
+    ASSERT_TRUE(class_id == training_sample.output_value());
+  }
   std::cout << "Trained with success." << std::endl;
   std::cout << std::endl;
 }
@@ -93,10 +95,11 @@ UNIT(LearnNOR) {
   Perceptron my_perceptron(0.1);
   my_perceptron.Train(training_set, false, true, 100);
 
-  ASSERT_TRUE(my_perceptron.GetOutput({ 0, 0 }) == true);
-  ASSERT_TRUE(my_perceptron.GetOutput({ 0, 1 }) == false);
-  ASSERT_TRUE(my_perceptron.GetOutput({ 1, 0 }) == false);
-  ASSERT_TRUE(my_perceptron.GetOutput({ 1, 1 }) == false);
+  for (const auto & training_sample : training_set) {
+    bool class_id;
+    class_id = my_perceptron.GetOutput(training_sample.input_vector());
+    ASSERT_TRUE(class_id == training_sample.output_value());
+  }
   std::cout << "Trained with success." << std::endl;
   std::cout << std::endl;
 }
@@ -113,12 +116,14 @@ UNIT(LearnNOT) {
   Perceptron my_perceptron(0.1);
   my_perceptron.Train(training_set, false, true, 100);
 
-  ASSERT_TRUE(my_perceptron.GetOutput({ 0 }) == true);
-  ASSERT_TRUE(my_perceptron.GetOutput({ 1 }) == false);
+  for (const auto & training_sample : training_set) {
+    bool class_id;
+    class_id = my_perceptron.GetOutput(training_sample.input_vector());
+    ASSERT_TRUE(class_id == training_sample.output_value());
+  }
   std::cout << "Trained with success." << std::endl;
   std::cout << std::endl;
 }
-
 
 UNIT(LearnXOR) {
   std::cout << "Train XOR function with perceptron." << std::endl;
@@ -134,13 +139,14 @@ UNIT(LearnXOR) {
   Perceptron my_perceptron(0.1);
   my_perceptron.Train(training_set, false, true, 100);
 
-  if ((!(my_perceptron.GetOutput({ 0, 0 }) == false)) ||
-      (!(my_perceptron.GetOutput({ 0, 1 }) == true)) ||
-      (!(my_perceptron.GetOutput({ 1, 0 }) == true)) ||
-      (!(my_perceptron.GetOutput({ 1, 1 }) == false))){
-    std::cout << "Failed to train. " <<
-    " A simple perceptron cannot learn the XOR function." << std::endl;
-    FAIL();
+  for (const auto & training_sample : training_set) {
+    bool class_id;
+    class_id = my_perceptron.GetOutput(training_sample.input_vector());
+    if(class_id != training_sample.output_value()) {
+      std::cout << "Failed to train. " <<
+        " A simple perceptron cannot learn the XOR function." << std::endl;
+      FAIL();
+    }
   }
 }
 
