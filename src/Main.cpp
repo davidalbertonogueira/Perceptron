@@ -23,8 +23,8 @@ UNIT(LearnAND) {
     {{ 1, 1 },true}
   };
 
-  Perceptron my_perceptron(0.1);
-  my_perceptron.Train(training_set, false, true, 100);
+  Perceptron my_perceptron;
+  my_perceptron.Train(training_set, false, 0.1, 100);
 
   for (const auto & training_sample : training_set) {
     bool class_id;
@@ -46,8 +46,8 @@ UNIT(LearnNAND) {
     {{ 1, 1 },false}
   };
 
-  Perceptron my_perceptron(0.1);
-  my_perceptron.Train(training_set, false, true, 100);
+  Perceptron my_perceptron;
+  my_perceptron.Train(training_set, false, 0.1, 100);
 
   for (const auto & training_sample : training_set) {
     bool class_id;
@@ -69,8 +69,8 @@ UNIT(LearnOR) {
     {{  1, 1 },true}
   };
 
-  Perceptron my_perceptron(0.1);
-  my_perceptron.Train(training_set, false, true, 100);
+  Perceptron my_perceptron;
+  my_perceptron.Train(training_set, false, 0.1, 100);
 
   for (const auto & training_sample : training_set) {
     bool class_id;
@@ -92,8 +92,8 @@ UNIT(LearnNOR) {
     {{ 1, 1 },false }
   };
 
-  Perceptron my_perceptron(0.1);
-  my_perceptron.Train(training_set, false, true, 100);
+  Perceptron my_perceptron;
+  my_perceptron.Train(training_set, false, 0.1, 100);
 
   for (const auto & training_sample : training_set) {
     bool class_id;
@@ -113,8 +113,8 @@ UNIT(LearnNOT) {
     {{ 1},false}
   };
 
-  Perceptron my_perceptron(0.1);
-  my_perceptron.Train(training_set, false, true, 100);
+  Perceptron my_perceptron;
+  my_perceptron.Train(training_set, false, 0.1, 100);
 
   for (const auto & training_sample : training_set) {
     bool class_id;
@@ -136,8 +136,8 @@ UNIT(LearnXOR) {
     { { 1, 1 },false }
   };
 
-  Perceptron my_perceptron(0.1);
-  my_perceptron.Train(training_set, false, true, 100);
+  Perceptron my_perceptron;
+  my_perceptron.Train(training_set, false, 0.1, 100);
 
   for (const auto & training_sample : training_set) {
     bool class_id;

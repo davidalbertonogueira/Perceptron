@@ -12,9 +12,10 @@
 #include <algorithm>
 
 #define USE_SIGMOID 0
+#define ZERO_WEIGHT_INITIALIZATION 1
 
 
-bool Perceptron::GetOutput(const std::vector<double> &x) {
+bool Perceptron::GetOutput(const std::vector<double> &x) const {
   Sample sample_set_with_bias(x);
   if (x.size()!=m_weights.size() ){
     if (x.size() + 1 == m_weights.size()) {
@@ -29,21 +30,22 @@ bool Perceptron::GetOutput(const std::vector<double> &x) {
 
 #if USE_SIGMOID == 1
   double y = utils::sigmoid(inner_prod);
-  return (y > 0) ? true : false;
+  return (y > 0.5) ? true : false;
 #else
   return (inner_prod > 0) ? true : false;
 #endif
 };
 
 void Perceptron::UpdateWeight(const std::vector<double> &x,
-                              double error) {
+                              double error,
+                              double learning_rate) {
   for (uint32_t i = 0; i < m_weights.size(); i++)
-    m_weights[i] += x[i] * m_learning_rate *  error;
+    m_weights[i] += x[i] * learning_rate *  error;
 };
 
 void Perceptron::Train(const std::vector<TrainingSample> &training_sample_set,
                        bool bias_already_in,
-                       bool zero_weight_initialization,
+                       double learning_rate,
                        int max_iterations) {
   std::vector<TrainingSample> training_sample_set_with_bias(training_sample_set);
 
@@ -56,12 +58,13 @@ void Perceptron::Train(const std::vector<TrainingSample> &training_sample_set,
   size_t num_examples = training_sample_set_with_bias.size();
   size_t num_features = training_sample_set_with_bias[0].GetInputVectorSize();
 
-  m_weights = std::vector<double>(num_features);
+  m_weights.resize(num_features);
 
   //initialize weight vector
   std::generate_n(m_weights.begin(),
                   num_features,
-                  (zero_weight_initialization) ? utils::gen_rand(0) : utils::gen_rand());
+                  (ZERO_WEIGHT_INITIALIZATION) ? 
+                  utils::gen_rand(0) : utils::gen_rand());
 
   std::cout << "Starting weights:\t";
   for (auto m_weightselement : m_weights)
@@ -77,7 +80,8 @@ void Perceptron::Train(const std::vector<TrainingSample> &training_sample_set,
         error_count++;
         double error = (correct_output ? 1 : 0) - (prediction ? 1 : 0);
         UpdateWeight(training_sample_with_bias.input_vector(),
-                     error);
+                     error,
+                     learning_rate);
       }
     }
     if (error_count == 0) break;
