@@ -15,6 +15,7 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
+#include <cassert> // for assert()
 
 class Perceptron {
 public:
@@ -34,8 +35,7 @@ public:
                     double error,
                     double learning_rate);
 
-  void Train(const std::vector<TrainingSample> &training_sample_set,
-             bool bias_already_in,
+  void Train(const std::vector<TrainingSample> &training_sample_set_with_bias,
              double learning_rate,
              int max_iterations);
 

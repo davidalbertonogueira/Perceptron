@@ -22,11 +22,19 @@ UNIT(LearnAND) {
     {{ 1, 0 },false},
     {{ 1, 1 },true}
   };
+  bool bias_already_in = false;
+  std::vector<TrainingSample> training_sample_set_with_bias(training_set);
+  //set up bias
+  if (!bias_already_in) {
+    for (auto & training_sample_with_bias : training_sample_set_with_bias) {
+      training_sample_with_bias.AddBiasValue(1);
+    }
+  }
 
   Perceptron my_perceptron;
-  my_perceptron.Train(training_set, false, 0.1, 100);
+  my_perceptron.Train(training_sample_set_with_bias, 0.1, 100);
 
-  for (const auto & training_sample : training_set) {
+  for (const auto & training_sample : training_sample_set_with_bias) {
     bool class_id;
     class_id = my_perceptron.GetOutput(training_sample.input_vector());
     ASSERT_TRUE(class_id == training_sample.output_value());
@@ -45,11 +53,19 @@ UNIT(LearnNAND) {
     {{ 1, 0 },true},
     {{ 1, 1 },false}
   };
+  bool bias_already_in = false;
+  std::vector<TrainingSample> training_sample_set_with_bias(training_set);
+  //set up bias
+  if (!bias_already_in) {
+    for (auto & training_sample_with_bias : training_sample_set_with_bias) {
+      training_sample_with_bias.AddBiasValue(1);
+    }
+  }
 
   Perceptron my_perceptron;
-  my_perceptron.Train(training_set, false, 0.1, 100);
+  my_perceptron.Train(training_sample_set_with_bias, 0.1, 100);
 
-  for (const auto & training_sample : training_set) {
+  for (const auto & training_sample : training_sample_set_with_bias) {
     bool class_id;
     class_id = my_perceptron.GetOutput(training_sample.input_vector());
     ASSERT_TRUE(class_id == training_sample.output_value());
@@ -68,11 +84,19 @@ UNIT(LearnOR) {
     {{  1, 0 },true},
     {{  1, 1 },true}
   };
+  bool bias_already_in = false;
+  std::vector<TrainingSample> training_sample_set_with_bias(training_set);
+  //set up bias
+  if (!bias_already_in) {
+    for (auto & training_sample_with_bias : training_sample_set_with_bias) {
+      training_sample_with_bias.AddBiasValue(1);
+    }
+  }
 
   Perceptron my_perceptron;
-  my_perceptron.Train(training_set, false, 0.1, 100);
+  my_perceptron.Train(training_sample_set_with_bias, 0.1, 100);
 
-  for (const auto & training_sample : training_set) {
+  for (const auto & training_sample : training_sample_set_with_bias) {
     bool class_id;
     class_id = my_perceptron.GetOutput(training_sample.input_vector());
     ASSERT_TRUE(class_id == training_sample.output_value());
@@ -91,11 +115,19 @@ UNIT(LearnNOR) {
     {{ 1, 0 },false},
     {{ 1, 1 },false }
   };
+  bool bias_already_in = false;
+  std::vector<TrainingSample> training_sample_set_with_bias(training_set);
+  //set up bias
+  if (!bias_already_in) {
+    for (auto & training_sample_with_bias : training_sample_set_with_bias) {
+      training_sample_with_bias.AddBiasValue(1);
+    }
+  }
 
   Perceptron my_perceptron;
-  my_perceptron.Train(training_set, false, 0.1, 100);
+  my_perceptron.Train(training_sample_set_with_bias, 0.1, 100);
 
-  for (const auto & training_sample : training_set) {
+  for (const auto & training_sample : training_sample_set_with_bias) {
     bool class_id;
     class_id = my_perceptron.GetOutput(training_sample.input_vector());
     ASSERT_TRUE(class_id == training_sample.output_value());
@@ -112,11 +144,19 @@ UNIT(LearnNOT) {
     {{ 0},true},
     {{ 1},false}
   };
+  bool bias_already_in = false;
+  std::vector<TrainingSample> training_sample_set_with_bias(training_set);
+  //set up bias
+  if (!bias_already_in) {
+    for (auto & training_sample_with_bias : training_sample_set_with_bias) {
+      training_sample_with_bias.AddBiasValue(1);
+    }
+  }
 
   Perceptron my_perceptron;
-  my_perceptron.Train(training_set, false, 0.1, 100);
+  my_perceptron.Train(training_sample_set_with_bias, 0.1, 100);
 
-  for (const auto & training_sample : training_set) {
+  for (const auto & training_sample : training_sample_set_with_bias) {
     bool class_id;
     class_id = my_perceptron.GetOutput(training_sample.input_vector());
     ASSERT_TRUE(class_id == training_sample.output_value());
@@ -135,11 +175,19 @@ UNIT(LearnXOR) {
     { { 1, 0 },true },
     { { 1, 1 },false }
   };
+  bool bias_already_in = false;
+  std::vector<TrainingSample> training_sample_set_with_bias(training_set);
+  //set up bias
+  if (!bias_already_in) {
+    for (auto & training_sample_with_bias : training_sample_set_with_bias) {
+      training_sample_with_bias.AddBiasValue(1);
+    }
+  }
 
   Perceptron my_perceptron;
-  my_perceptron.Train(training_set, false, 0.1, 100);
+  my_perceptron.Train(training_sample_set_with_bias,  0.1, 100);
 
-  for (const auto & training_sample : training_set) {
+  for (const auto & training_sample : training_sample_set_with_bias) {
     bool class_id;
     class_id = my_perceptron.GetOutput(training_sample.input_vector());
     if(class_id != training_sample.output_value()) {
