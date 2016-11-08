@@ -29,7 +29,10 @@ public:
     m_weights.clear();
   };
 
-  bool GetOutput(const std::vector<double> &x) const;
+ void  GetInputInnerProdWithWeights(const std::vector<double> &input,
+                               double * output) const;
+
+ bool GetBooleanOutput(const std::vector<double> &input) const;
 
   void UpdateWeight(const std::vector<double> &x,
                     double error,

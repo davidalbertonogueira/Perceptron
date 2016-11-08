@@ -11,28 +11,28 @@
 #include <vector>
 #include <algorithm>
 
-#define USE_SIGMOID 0
 #define ZERO_WEIGHT_INITIALIZATION 1
 
-
-bool Perceptron::GetOutput(const std::vector<double> &x) const {
-  assert(x.size() == m_weights.size());
-  double inner_prod = std::inner_product(begin(x),
-                                         end(x),
+void Perceptron::GetInputInnerProdWithWeights(const std::vector<double> &input,
+                                              double * output) const {
+  assert(input.size() == m_weights.size());
+  double inner_prod = std::inner_product(begin(input),
+                                         end(input),
                                          begin(m_weights),
                                          0.0);
+  *output = inner_prod;
+}
 
-#if USE_SIGMOID == 1
-  double y = utils::sigmoid(inner_prod);
-  return (y > 0.5) ? true : false;
-#else
-  return (inner_prod > 0) ? true : false;
-#endif
+bool Perceptron::GetBooleanOutput(const std::vector<double> &input) const {
+  double inner_prod;
+  GetInputInnerProdWithWeights(input, &inner_prod);
+  return (inner_prod >0) ? true : false;
 };
 
 void Perceptron::UpdateWeight(const std::vector<double> &x,
                               double error,
                               double learning_rate) {
+  //simplified delta rule for a neuron with linear function
   for (uint32_t i = 0; i < m_weights.size(); i++)
     m_weights[i] += x[i] * learning_rate *  error;
 };
@@ -48,7 +48,7 @@ void Perceptron::Train(const std::vector<TrainingSample> &training_sample_set_wi
   //initialize weight vector
   std::generate_n(m_weights.begin(),
                   num_features,
-                  (ZERO_WEIGHT_INITIALIZATION) ? 
+                  (ZERO_WEIGHT_INITIALIZATION) ?
                   utils::gen_rand(0) : utils::gen_rand());
 
   std::cout << "Starting weights:\t";
@@ -59,7 +59,7 @@ void Perceptron::Train(const std::vector<TrainingSample> &training_sample_set_wi
   for (int i = 0; i < max_iterations; i++) {
     int error_count = 0;
     for (auto & training_sample_with_bias : training_sample_set_with_bias) {
-      bool prediction = GetOutput(training_sample_with_bias.input_vector());
+      bool prediction = GetBooleanOutput(training_sample_with_bias.input_vector());
       bool correct_output = training_sample_with_bias.output_value();
       if (prediction != correct_output) {
         error_count++;

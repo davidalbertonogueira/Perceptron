@@ -36,7 +36,7 @@ UNIT(LearnAND) {
 
   for (const auto & training_sample : training_sample_set_with_bias) {
     bool class_id;
-    class_id = my_perceptron.GetOutput(training_sample.input_vector());
+    class_id = my_perceptron.GetBooleanOutput(training_sample.input_vector());
     ASSERT_TRUE(class_id == training_sample.output_value());
   }
   std::cout << "Trained with success." << std::endl;
@@ -67,7 +67,7 @@ UNIT(LearnNAND) {
 
   for (const auto & training_sample : training_sample_set_with_bias) {
     bool class_id;
-    class_id = my_perceptron.GetOutput(training_sample.input_vector());
+    class_id = my_perceptron.GetBooleanOutput(training_sample.input_vector());
     ASSERT_TRUE(class_id == training_sample.output_value());
   }
   std::cout << "Trained with success." << std::endl;
@@ -98,7 +98,7 @@ UNIT(LearnOR) {
 
   for (const auto & training_sample : training_sample_set_with_bias) {
     bool class_id;
-    class_id = my_perceptron.GetOutput(training_sample.input_vector());
+    class_id = my_perceptron.GetBooleanOutput(training_sample.input_vector());
     ASSERT_TRUE(class_id == training_sample.output_value());
   }
   std::cout << "Trained with success." << std::endl;
@@ -129,7 +129,7 @@ UNIT(LearnNOR) {
 
   for (const auto & training_sample : training_sample_set_with_bias) {
     bool class_id;
-    class_id = my_perceptron.GetOutput(training_sample.input_vector());
+    class_id = my_perceptron.GetBooleanOutput(training_sample.input_vector());
     ASSERT_TRUE(class_id == training_sample.output_value());
   }
   std::cout << "Trained with success." << std::endl;
@@ -158,7 +158,7 @@ UNIT(LearnNOT) {
 
   for (const auto & training_sample : training_sample_set_with_bias) {
     bool class_id;
-    class_id = my_perceptron.GetOutput(training_sample.input_vector());
+    class_id = my_perceptron.GetBooleanOutput(training_sample.input_vector());
     ASSERT_TRUE(class_id == training_sample.output_value());
   }
   std::cout << "Trained with success." << std::endl;
@@ -189,7 +189,7 @@ UNIT(LearnXOR) {
 
   for (const auto & training_sample : training_sample_set_with_bias) {
     bool class_id;
-    class_id = my_perceptron.GetOutput(training_sample.input_vector());
+    class_id = my_perceptron.GetBooleanOutput(training_sample.input_vector());
     if(class_id != training_sample.output_value()) {
       std::cout << "Failed to train. " <<
         " A simple perceptron cannot learn the XOR function." << std::endl;
