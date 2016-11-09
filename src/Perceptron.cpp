@@ -32,7 +32,6 @@ bool Perceptron::GetBooleanOutput(const std::vector<double> &input) const {
 void Perceptron::UpdateWeight(const std::vector<double> &x,
                               double error,
                               double learning_rate) {
-  //simplified delta rule for a neuron with linear function
   for (uint32_t i = 0; i < m_weights.size(); i++)
     m_weights[i] += x[i] * learning_rate *  error;
 };
@@ -63,6 +62,7 @@ void Perceptron::Train(const std::vector<TrainingSample> &training_sample_set_wi
       bool correct_output = training_sample_with_bias.output_value();
       if (prediction != correct_output) {
         error_count++;
+        //simplified delta rule for a neuron with linear function
         double error = (correct_output ? 1 : 0) - (prediction ? 1 : 0);
         UpdateWeight(training_sample_with_bias.input_vector(),
                      error,
