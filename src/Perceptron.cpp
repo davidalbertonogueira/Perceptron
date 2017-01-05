@@ -39,7 +39,7 @@ void Perceptron::UpdateWeight(const std::vector<double> &x,
 void Perceptron::Train(const std::vector<TrainingSample> &training_sample_set_with_bias,
                        double learning_rate,
                        int max_iterations) {
-  size_t num_examples = training_sample_set_with_bias.size();
+  //size_t num_examples = training_sample_set_with_bias.size();
   size_t num_features = training_sample_set_with_bias[0].GetInputVectorSize();
 
   m_weights.resize(num_features);
